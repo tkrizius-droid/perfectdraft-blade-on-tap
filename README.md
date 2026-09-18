@@ -1,8 +1,10 @@
-# PerfectDraft + Blade On Tap for Home Assistant
+# PerfectDraft Pro + Blade On Tap for Home Assistant
 
 A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, with keg artwork, glass recommendations, country flags, freshness, ABV, temperature, remaining volume and Blade pint tracking.
 
-> This repository supports a HACS Dashboard install for the frontend assets. Home Assistant helpers/templates/automations are still installed separately from `packages/perfectdraft_on_tap.yaml`.
+> **Current release:** `v1.0.0`  
+> **Tested:** successfully on a live Home Assistant installation using the HACS asset path.  
+> HACS installs the frontend assets; Home Assistant helpers/templates/automations are installed separately from `packages/perfectdraft_on_tap.yaml`.
 
 ## What this project includes
 
@@ -21,6 +23,26 @@ A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, w
 - For the PerfectDraft Pro side: `Falkvinge/hassio-integration-perfectdraft-pro`
 
 The Blade side works without a smart Blade integration.
+
+## Choose your installation path
+
+### HACS + fresh Home Assistant setup
+
+Use this if you are installing the project for the first time:
+
+1. Install the frontend assets through HACS.
+2. Install `packages/perfectdraft_on_tap.yaml` for the helpers, template sensors and Blade automations.
+3. Import `dashboard/on_tap_hacs.yaml`.
+
+Full step-by-step instructions are in [`INSTALL.md`](INSTALL.md).
+
+### Existing PerfectDraft / Blade setup
+
+If you already have working helpers or template sensors, **do not blindly install the package YAML**. Existing entity IDs may differ from the public defaults. Compare your entities using `reference/ENTITY_MAPPING.md`, then adapt the dashboard references if required.
+
+### Fully manual installation
+
+Use this route if you do not want HACS to manage the artwork.
 
 ## Manual installation
 
@@ -94,7 +116,7 @@ Use:
 
 Changing the Blade keg automatically stamps the insertion time and resets the Blade counter to 14 pints.
 
-## HACS installation
+## HACS frontend installation
 
 1. In HACS, add this repository as a **Dashboard** custom repository:
    `tkrizius-droid/perfectdraft-blade-on-tap`
@@ -134,4 +156,9 @@ Beer/product artwork and brand marks remain the property of their respective own
 - `reference/ENTITY_MAPPING.md`
 - `reference/BUILD_VALIDATION.md`
 - `reference/ASSET_MANIFEST.md`
+
+
+## Release
+
+The first tested public release is **v1.0.0**: [PerfectDraft Pro + Blade On Tap v1.0.0](../../releases/tag/v1.0.0).
 
