@@ -1,11 +1,17 @@
 # Quick start
 
+## HACS route
+
 1. Install **HACS** and **Button Card**.
-2. Add this repository to HACS as a **Dashboard** custom repository.
-3. Download **PerfectDraft + Blade On Tap** in HACS.
-4. Copy `packages/perfectdraft_on_tap.yaml` to `/config/packages/` and enable Home Assistant packages if needed.
+2. In HACS, add `tkrizius-droid/perfectdraft-blade-on-tap` as a **Dashboard** custom repository.
+3. Download **PerfectDraft + Blade On Tap**.
+4. Copy `packages/perfectdraft_on_tap.yaml` from this GitHub repository to `/config/packages/` and enable Home Assistant packages if needed.
 5. For PerfectDraft Pro, install/configure `Falkvinge/hassio-integration-perfectdraft-pro`.
-6. Copy/import `dashboard/on_tap.yaml` into a Home Assistant dashboard Raw configuration editor.
+6. Import `dashboard/on_tap_hacs.yaml` into a Home Assistant dashboard Raw configuration editor.
 7. Select your current Blade and/or PerfectDraft keg.
 
-See `README.md` for full instructions, entity mapping and troubleshooting.
+## Manual route
+
+Copy `www/perfectdraft/` to `/config/www/perfectdraft/`, copy the package YAML as above, then import `dashboard/on_tap.yaml`.
+
+See `README.md` for the full instructions, entity mapping and troubleshooting.
