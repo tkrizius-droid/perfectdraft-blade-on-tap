@@ -2,6 +2,10 @@
 
 A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, with keg artwork, glass recommendations, country flags, freshness, ABV, temperature, remaining volume and Blade pint tracking.
 
+## Screenshot
+
+![PerfectDraft Pro + Blade On Tap dashboard](dashboard-v1.png)
+
 > **Current release:** `v1.0.0`  
 > **Tested:** successfully on a live Home Assistant installation using the HACS asset path.  
 > HACS installs the frontend assets; Home Assistant helpers/templates/automations are installed separately from `packages/perfectdraft_on_tap.yaml`.
