@@ -2,7 +2,7 @@
 
 A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, with keg artwork, glass recommendations, country flags, freshness, ABV, temperature, remaining volume and Blade pint tracking.
 
-> This repository is being prepared for HACS-friendly distribution. The dashboard itself is usable now; HACS can manage the dashboard assets once the `dist/` package is populated.
+> This repository supports a HACS Dashboard install for the frontend assets. Home Assistant helpers/templates/automations are still installed separately from `packages/perfectdraft_on_tap.yaml`.
 
 ## What this project includes
 
@@ -94,9 +94,17 @@ Use:
 
 Changing the Blade keg automatically stamps the insertion time and resets the Blade counter to 14 pints.
 
-## HACS status
+## HACS installation
 
-HACS Dashboard repositories require a matching JavaScript file and may ship supporting files from `dist/`. This repository will use that mechanism to distribute the artwork and HACS-specific dashboard assets. The Home Assistant package YAML still needs to be copied/enabled in Home Assistant because HACS Dashboard installs frontend files, not arbitrary Home Assistant helpers and automations.
+1. In HACS, add this repository as a **Dashboard** custom repository:
+   `tkrizius-droid/perfectdraft-blade-on-tap`
+2. Download **PerfectDraft + Blade On Tap**.
+3. HACS installs the files from `dist/` under `/config/www/community/perfectdraft-blade-on-tap/`.
+4. Use `dashboard/on_tap_hacs.yaml` as the HACS dashboard variant. Its artwork paths use:
+   `/hacsfiles/perfectdraft-blade-on-tap/perfectdraft/...`
+5. Copy `packages/perfectdraft_on_tap.yaml` to `/config/packages/` separately, then restart Home Assistant after validating configuration.
+
+HACS handles the frontend assets; it does **not** create the Home Assistant helpers, template sensors or automations contained in the package YAML.
 
 ## Optional theme
 
