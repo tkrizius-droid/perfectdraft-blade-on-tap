@@ -1,0 +1,59 @@
+# =========================================================
+# automations.yaml
+# Generic/export copies of the BLADE automations used by the
+# "On Tap" dashboard. New generic IDs replace the source
+# installation's IDs. Working logic is unchanged.
+#
+# Three automations drive the Blade side:
+#   1. blade_keg_change_stamp_inserted  - when the keg select
+#      changes, stamp input_datetime.blade_keg_inserted.
+#   2. blade_keg_change_reset_pints     - when the keg select
+#      changes, reset counter.blade_pints_remaining to 14.
+#   3. blade_pints_daily_decrement      - every day at 00:00,
+#      remove one pint from the counter.
+# =========================================================
+
+- id: blade_keg_change_stamp_inserted
+  alias: Blade - Set keg inserted on change
+  description: Records the current time in input_datetime.blade_keg_inserted whenever
+    the Blade keg selection changes, restarting the 30-day freshness counter.
+  triggers:
+    - entity_id: input_select.blade_current_keg
+      trigger: state
+  conditions: []
+  actions:
+    - action: input_datetime.set_datetime
+      target:
+        entity_id: input_datetime.blade_keg_inserted
+      data:
+        datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+  mode: single
+
+- id: blade_keg_change_reset_pints
+  alias: Blade Pints - New Keg Reset
+  description: Resets the Blade keg pint counter to 14 (full) whenever the keg selection
+    changes, matching the existing keg-change automation.
+  triggers:
+    - entity_id: input_select.blade_current_keg
+      trigger: state
+  actions:
+    - action: counter.set_value
+      data:
+        value: 14
+      target:
+        entity_id: counter.blade_pints_remaining
+  mode: single
+
+- id: blade_pints_daily_decrement
+  alias: Blade Pints - Daily Countdown
+  description: Decrements the Blade keg pints remaining by 1 every day at midnight,
+    one pint per day for the 14-pint keg. Use the + and - buttons on the gauge to
+    adjust for skipped or extra pints.
+  triggers:
+    - at: 00:00:00
+      trigger: time
+  actions:
+    - action: counter.decrement
+      target:
+        entity_id: counter.blade_pints_remaining
+  mode: single

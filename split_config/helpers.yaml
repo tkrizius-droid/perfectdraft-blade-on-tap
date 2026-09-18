@@ -1,0 +1,185 @@
+# =========================================================
+# helpers.yaml
+# Generic/export copies of the helper entities used by the
+# PerfectDraft + Blade "On Tap" dashboard.
+#
+# These are the WORKING configs captured from the source
+# installation, made location-neutral. An installer creates
+# exactly these helpers (via YAML packages or the UI) and the
+# rest of the package works.
+#
+# NOTE: blade_current_keg, blade_pints_remaining,
+# blade_keg_inserted and pours_keg_start were UI-created
+# helpers on the source machine. Their captured configs below
+# are equivalent YAML that reproduces them.
+# =========================================================
+
+input_select:
+  blade_current_keg:
+    name: Blade Current Keg
+    icon: mdi:keg
+    options:
+      - Affligem Blanche
+      - Affligem Blonde
+      - Affligem Fruits Rouges
+      - Alfa
+      - Amstel
+      - Birra Messina Cristalli di Sale
+      - Birra Moretti Baffo d'Oro
+      - Birra Moretti L'Autentica
+      - Brixton Reliance
+      - Cruzcampo
+      - Desperados
+      - Edelweiss Hefetrüb
+      - Gösser Märzen
+      - Gösser Zwickl
+      - Heineken
+      - Heineken 0.0
+      - Heineken Silver
+      - Ladrón de Manzanas
+      - Lagunitas IPA
+      - Linzer Bier
+      - Orchard Thieves
+      - Puntigamer
+      - Red Stripe
+      - Strongbow Dark Fruits
+      - Tiger
+      - Villacher Märzen
+      - Zipfer Urtyp
+  perfectdraft_current_keg:
+    name: PerfectDraft Current Keg
+    icon: mdi:keg
+    options:
+      - Anosteké Blonde
+      - Bass Pale Ale
+      - Beck's
+      - Beck's Gold
+      - Birra Del Borgo Lisa
+      - Bost-Ale
+      - BrewDog Elvis Juice
+      - BrewDog Hopped in Harmony
+      - BrewDog Punk IPA
+      - Bud Light
+      - Budweiser
+      - Camden Eazy IPA
+      - Camden Hells Lager
+      - Camden IPA
+      - Camden Marzen
+      - Camden Pale Ale
+      - Castelain Grand Cru
+      - Ch'ti Blonde
+      - Corona Cero 0.0%
+      - Corona Extra
+      - Corona Ligera
+      - Diebels Alt
+      - Diekirch Grand Cru
+      - Franziskaner Dunkel
+      - Franziskaner Kellerbier
+      - Franziskaner Royal
+      - Franziskaner Weissbier
+      - FRÜH Kölsch
+      - Fuller's London Pride
+      - Ginette Bio Fruit
+      - Ginette Bio Refreshing Blonde
+      - Ginette Bio White
+      - Goose Island IPA
+      - Goose Island Midway
+      - Haake Beck
+      - Hasseröder
+      - Hawkstone Lager
+      - Hertog Jan
+      - Hertog Jan Bockbier
+      - Hertog Jan Grand Pilsener
+      - Hoegaarden
+      - Hoegaarden Rose
+      - Innis & Gunn Lager Beer
+      - Jupiler
+      - Kopparberg Crisp Apple Cider
+      - Kopparberg Strawberry & Lime Cider
+      - Kwak
+      - Kwak Blonde
+      - La Chouffe Blonde
+      - La Débauche Lux
+      - La Trappe Blond
+      - La Virgen 360
+      - La Virgen Lager
+      - Leffe Ambrée
+      - Leffe Blanche
+      - Leffe Blonde 0.0%
+      - Leffe Blonde
+      - Leffe Blonde 6.6%
+      - Leffe Brune
+      - Leffe La Légère
+      - Leffe Prestige
+      - Leffe Rituel 9°
+      - Leffe Royal Cascade
+      - Leffe Royal Whitbread Golding
+      - Leffe Ruby
+      - Leffe Spring
+      - Leffe Summer
+      - Lowenbrau
+      - Lowenbrau Oktoberfestbier
+      - Magic Rock Dark Arts
+      - Magic Rock High Wire Grapefruit
+      - Magic Rock Magic Orange
+      - Mahou
+      - Meteor White IPA
+      - Mikkeller Game of Thrones
+      - Mikkeller Heated Seats
+      - Modelo Especial
+      - Mont Blanc La Rousse
+      - Ninkasi French IPA
+      - Northern Monk Faith
+      - Old Speckled Hen
+      - Orchard Pig Reveller Cider
+      - Palm
+      - Peroni Nastro Azzurro
+      - Romola
+      - Saison Dupont Dry Hop
+      - Samson 11
+      - San Miguel Especial
+      - Schneider's Bayrisch Hell
+      - Singha
+      - Siren Lumina IPA
+      - Spaten
+      - Spaten Oktoberfestbier
+      - St Austell Proper Job IPA
+      - St-Feuillien Blonde
+      - Stella Artois 0.0%
+      - Stella Artois
+      - Stella Artois Unfiltered
+      - Tennent's Lager
+      - Thatchers Gold Cider
+      - Theakston Old Peculier
+      - Thornbridge AM:PM
+      - Thornbridge Jaipur
+      - Thornbridge Shelby
+      - Tiny Rebel Clwb Tropica
+      - Tiny Rebel Key Lime Lager
+      - Tripel Karmeliet
+      - TROOPER ORIGINAL
+      - Victoria Strong Blond
+      - Vocation Hop, Skip & Juice
+      - Vocation Life & Death
+
+counter:
+  blade_pints_remaining:
+    name: Blade Pints Remaining
+    minimum: 0
+    maximum: 14
+    step: 1
+    initial: 14
+
+input_datetime:
+  blade_keg_inserted:
+    name: Blade Keg Inserted
+    has_date: true
+    has_time: true
+
+input_number:
+  pours_keg_start:
+    name: PerfectDraft Pours Keg Start
+    min: 0
+    max: 100
+    step: 1
+    mode: box

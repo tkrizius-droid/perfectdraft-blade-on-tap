@@ -1,0 +1,14 @@
+MISSING_ASSETS
+==============
+
+All 169 files referenced by the dashboard and the keg-picture automation
+are present in this package.
+
+One background is supplied separately, not missing but not included:
+
+  - background image "peakpx.jpg" (dashboard background)
+    -> stored in Home Assistant image-upload media store on the source
+       system; not extracted per export rules. Supply your own and place
+       it at /config/www/perfectdraft/background/ (see ASSET_MANIFEST.md H).
+
+Otherwise: NONE

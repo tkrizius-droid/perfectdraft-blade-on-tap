@@ -1,0 +1,147 @@
+# =========================================================
+# templates.yaml
+# Generic/export copies of the template sensors used by the
+# PerfectDraft + Blade "On Tap" dashboard.
+#
+# - Blade Keg Freshness ......... from configuration.yaml (YAML)
+# - PerfectDraft Pints Remaining  from a UI Template entry
+# - PerfectDraft Pours This Keg .. from a UI Template entry
+# - PerfectDraft Current Keg ABV . from a UI Template entry,
+#                                  renamed to the PUBLIC entity name
+#                                  sensor.perfectdraft_current_keg_abv
+#
+# The ABV lookup values are preserved EXACTLY as supplied by the
+# source installation. They have not been modified, regenerated,
+# corrected, deduplicated or replaced.
+# =========================================================
+
+template:
+  - sensor:
+      # -----------------------------------------------------
+      # Blade Keg Freshness (30-day countdown)
+      # Source entity: input_datetime.blade_keg_inserted
+      # -----------------------------------------------------
+      - name: "Blade Keg Freshness"
+        unique_id: blade_keg_freshness
+        unit_of_measurement: "d"
+        icon: mdi:calendar-clock
+        state: >
+          {% set inserted = states('input_datetime.blade_keg_inserted') %}
+          {% if inserted and inserted not in ['unknown', 'unavailable', 'none', ''] %}
+            {% set days = ((now().timestamp() - as_timestamp(inserted)) / 86400) | int %}
+            {{ [30 - days, 0] | max }}
+          {% else %}
+            unavailable
+          {% endif %}
+        attributes:
+          keg_inserted_at: "{{ states('input_datetime.blade_keg_inserted') }}"
+
+      # -----------------------------------------------------
+      # PerfectDraft Pints Remaining
+      # Source entity: sensor.perfectdraft_pro_keg_remaining
+      # (auto-provided by the PerfectDraft HACS integration)
+      # 6L keg / 0.568 L per pint ~= 10.5 pints, scaled by %
+      # -----------------------------------------------------
+      - name: "PerfectDraft Pints Remaining"
+        unique_id: perfectdraft_pints_remaining
+        unit_of_measurement: "pints"
+        state_class: measurement
+        icon: mdi:beer
+        state: >
+          {{ (states('sensor.perfectdraft_pro_keg_remaining') | float(0) / 100 * 10.5) | round(1) }}
+
+      # -----------------------------------------------------
+      # PerfectDraft Pours This Keg
+      # Source entities:
+      #   sensor.perfectdraft_pro_pours (integration, monotonic)
+      #   input_number.pours_keg_start  (helper, baseline at keg change)
+      # -----------------------------------------------------
+      - name: "PerfectDraft Pours This Keg"
+        unique_id: perfectdraft_pours_this_keg
+        icon: mdi:glass-mug-variant
+        state: >
+          {{ states('sensor.perfectdraft_pro_pours') | int(0) - states('input_number.pours_keg_start') | int(0) }}
+
+      # -----------------------------------------------------
+      # PerfectDraft Current Keg ABV
+      # PUBLIC entity name: sensor.perfectdraft_current_keg_abv
+      # Source entity: input_select.perfectdraft_current_keg
+      #
+      # ABV values preserved EXACTLY as supplied. Do not edit.
+      # -----------------------------------------------------
+      - name: "PerfectDraft Current Keg ABV"
+        unique_id: perfectdraft_current_keg_abv
+        unit_of_measurement: "%"
+        icon: mdi:percent
+        state: >
+          {% set keg = states('input_select.perfectdraft_current_keg') %}
+
+          {% set abv = {
+            "Bass Pale Ale": 4.4,
+            "Beck's": 4.9,
+            "Beck's Gold": 4.9,
+            "BrewDog Punk IPA": 5.4,
+            "Bud Light": 3.4,
+            "Budweiser": 4.5,
+            "Camden Eazy IPA": 5.0,
+            "Camden Hells Lager": 4.6,
+            "Camden Pale Ale": 4.0,
+            "Ch'ti Blonde": 6.4,
+            "Corona Cero 0.0%": 0.0,
+            "Corona Extra": 4.5,
+            "Franziskaner Kellerbier": 5.2,
+            "Franziskaner Royal": 6.0,
+            "Franziskaner Weissbier": 5.0,
+            "FRÜH Kölsch": 4.8,
+            "Fuller's London Pride": 4.7,
+            "Goose Island IPA": 5.9,
+            "Goose Island Midway": 4.1,
+            "Haake Beck": 4.9,
+            "Hasseröder": 4.9,
+            "Hawkstone Lager": 4.8,
+            "Hertog Jan": 5.1,
+            "Hoegaarden": 4.9,
+            "Hoegaarden Rose": 3.0,
+            "Jupiler": 5.2,
+            "Kopparberg Crisp Apple Cider": 4.0,
+            "Kopparberg Strawberry & Lime Cider": 4.0,
+            "Kwak": 8.4,
+            "Kwak Blonde": 7.4,
+            "La Chouffe Blonde": 8.0,
+            "Leffe Blonde Blonde": 7.4,
+            "La Chouffe Blonde": 8.0,
+            "Leffe Blonde 0.0%": 0.0,
+            "Leffe Blonde": 6.0,
+            "Leffe Brune": 6.5,
+            "Leffe Ruby": 5.0,
+            "Leffe Summer": 5.2,
+            "Lowenbrau": 5.2,
+            "Mahou": 5.1,
+            "Meteor White IPA": 5.0,
+            "Modelo Especial": 4.5,
+            "Mont Blanc La Rousse": 6.5,
+            "Ninkasi French IPA": 5.4,
+            "Northern Monk Faith": 5.4,
+            "Orchard Pig Reveller Cider": 4.5,
+            "Peroni Nastro Azzurro": 5.0,
+            "Saison Dupont Dry Hop": 6.5,
+            "Samson 11": 4.7,
+            "San Miguel Especial": 5.4,
+            "Schneider's Bayrisch Hell": 4.9,
+            "Singha": 5.0,
+            "Siren Lumina IPA": 4.2,
+            "Spaten": 5.2,
+            "Stella Artois 0.0%": 0.0,
+            "Stella Artois": 5.0,
+            "Stella Artois Unfiltered": 5.0,
+            "Tennent's Lager": 4.0,
+            "Thatchers Gold Cider": 4.8,
+            "Theakston Old Peculier": 5.6,
+            "Thornbridge Jaipur": 5.9,
+            "Tiny Rebel Clwb Tropica": 5.0,
+            "Tripel Karmeliet": 8.4,
+            "TROOPER ORIGINAL": 4.7,
+            "Vocation Life & Death": 6.5
+          } %}
+
+          {{ abv.get(keg, none) }}

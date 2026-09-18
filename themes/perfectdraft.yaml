@@ -1,0 +1,91 @@
+# Perfect Draft
+# Amber tap-list board theme for the beerdisplaysystem.co.uk look.
+
+perfectdraft:
+  card-mod-theme: perfectdraft
+
+  modes:
+    dark: {}
+
+  # =========================
+  # FONTS (Bebas Neue + Space Grotesk, loaded via card-mod-global @import)
+  # =========================
+  primary-font-family: "'Space Grotesk', 'Arial', Roboto, sans-serif"
+  paper-font-headline_-_font-family: "'Bebas Neue', 'Arial Narrow', sans-serif"
+  paper-font-common_-_font-family: "'Space Grotesk', 'Arial', Roboto, sans-serif"
+
+  # =========================
+  # DESIGN TOKENS (malt, amber, foam)
+  # =========================
+  pd-amber: "#fbbf24"
+  pd-amber-deep: "#b45309"
+  pd-malt: "#92400e"
+  pd-foam: "#f7f1e3"
+  pd-font-display: "'Bebas Neue', 'Arial Narrow', sans-serif"
+  pd-font-body: "'Space Grotesk', 'Arial', Roboto, sans-serif"
+
+  # =========================
+  # PAGE (bar-room: warm malt base, amber glow from the top, glass sheen)
+  # =========================
+  background: "linear-gradient(180deg, rgba(245,158,11,0.24) 0%, rgba(10,9,8,0) 24%), radial-gradient(ellipse 90% 55% at 82% -6%, rgba(251,191,36,0.30), transparent 64%), radial-gradient(ellipse 80% 50% at 18% 108%, rgba(180,83,9,0.28), transparent 60%), #170f07"
+
+  primary-color: "#fbbf24"
+  accent-color: "#d97706"
+
+  primary-text-color: "#f7f1e3"
+  secondary-text-color: "#b7ab96"
+  text-primary-color: "#f7f1e3"
+  text-secondary-color: "#b7ab96"
+  disabled-text-color: "#6b6048"
+  label-badge-text-color: "#f7f1e3"
+
+  divider-color: "rgba(247,241,227,0.10)"
+  border-color: "rgba(247,241,227,0.16)"
+
+  # =========================
+  # CARDS (amber-tinted glass, rounded-2xl, warm hairline border)
+  # =========================
+  card-background-color: "rgba(251,191,36,0.075)"
+  ha-card-background: "linear-gradient(180deg, rgba(214,140,20,0.20), rgba(30,23,14,0.45))"
+  ha-card-border-color: "rgba(251,191,36,0.22)"
+  ha-card-border-radius: "16px"
+  ha-card-box-shadow: "0 1px 3px rgba(0,0,0,0.55), 0 14px 36px rgba(60,35,0,0.42)"
+
+  # =========================
+  # HEADER / SIDEBAR
+  # =========================
+  app-header-background-color: "rgba(20,15,9,0.62)"
+  app-header-text-color: "#f7f1e3"
+  app-header-border-bottom-color: "rgba(251,191,36,0.08)"
+  sidebar-background-color: "#171009"
+  sidebar-text-color: "#b7ab96"
+  sidebar-icon-color: "#b7ab96"
+  sidebar-selected-icon-color: "#fbbf24"
+  sidebar-selected-text-color: "#f7f1e3"
+
+  # =========================
+  # INPUTS / CONTROL COLOUR
+  # =========================
+  input-fill-color: "rgba(247,241,227,0.07)"
+  input-fill-focused-color: "rgba(251,191,36,0.12)"
+  input-text-color: "#f7f1e3"
+  input-placeholder-color: "#8a7c62"
+  input-dropdown-icon-color: "#b7ab96"
+  input-border-color: "rgba(251,191,36,0.18)"
+  mdc-theme-primary: "#fbbf24"
+  mdc-theme-on-primary: "#14100a"
+
+  state-icon-color: "#b7ab96"
+  state-icon-active-color: "#fbbf24"
+
+  tile-background: "rgba(251,191,36,0.055)"
+  tile-icon-color: "#fbbf24"
+
+  # =========================
+  # WHOLE-DASHBOARD NICETIES (font load + card skin)
+  # =========================
+  card-mod-global: |
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    ha-card {
+      border: 1px solid rgba(251,191,36,0.16);
+    }
