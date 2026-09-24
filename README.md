@@ -24,6 +24,7 @@ A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, w
 - Home Assistant
 - HACS
 - **Button Card** (`custom:button-card`)
+- **Expander Card** (`custom:expander-card`, Alia5/lovelace-expander-card)
 - For the PerfectDraft Pro side: `Falkvinge/hassio-integration-perfectdraft-pro`
 
 The Blade side works without a smart Blade integration.
