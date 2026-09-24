@@ -6,6 +6,13 @@ A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, w
 
 ![PerfectDraft Pro + Blade On Tap dashboard](dashboard-v1.png)
 
+
+### Beer category dropdowns
+
+The updated dashboard groups beers into collapsible categories so you can expand only the section you want.
+
+![Beer category dropdown example](dashboard-dropdown-categories.jpg)
+
 > **Current release:** `v1.0.0`  
 > **Tested:** successfully on a live Home Assistant installation using the HACS asset path.  
 > HACS installs the frontend assets; Home Assistant helpers/templates/automations are installed separately from `packages/perfectdraft_on_tap.yaml`.
