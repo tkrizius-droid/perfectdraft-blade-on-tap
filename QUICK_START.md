@@ -2,7 +2,7 @@
 
 ## HACS route
 
-1. Install **HACS** and **Button Card**.
+1. Install **HACS**, **Button Card** and **Expander Card** (`Alia5/lovelace-expander-card`).
 2. In HACS, add `tkrizius-droid/perfectdraft-blade-on-tap` as a **Dashboard** custom repository.
 3. Download **PerfectDraft + Blade On Tap**.
 4. Copy `packages/perfectdraft_on_tap.yaml` from this GitHub repository to `/config/packages/` and enable Home Assistant packages if needed.
