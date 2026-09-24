@@ -11,7 +11,7 @@ A Home Assistant dashboard for **PerfectDraft Pro** and **Blade** keg systems, w
 
 The updated dashboard groups beers into collapsible categories so you can expand only the section you want.
 
-![Beer category dropdown example](dashboard-dropdown-categories.jpg)
+![Beer category dropdown example](dashboard-dropdown-categories.webp)
 
 > **Current release:** `v1.0.0`  
 > **Tested:** successfully on a live Home Assistant installation using the HACS asset path.  
