@@ -11,6 +11,7 @@ Required:
 - Home Assistant
 - HACS
 - Button Card (`custom:button-card`)
+- Expander Card (`custom:expander-card`, `Alia5/lovelace-expander-card`)
 
 For PerfectDraft Pro:
 - PerfectDraft Pro integration by Falkvinge: `Falkvinge/hassio-integration-perfectdraft-pro`
@@ -48,13 +49,14 @@ If the neutral keg image loads, the HACS asset install is working.
 
 ---
 
-## B. Install Button Card
+## B. Install dashboard cards
 
-Install **Button Card** in HACS if it is not already installed.
+Install **Button Card** and **Expander Card** (`Alia5/lovelace-expander-card`) in HACS if they are not already installed.
 
 The dashboard uses:
 
-`custom:button-card`
+- `custom:button-card`
+- `custom:expander-card`
 
 Reload/restart Home Assistant if HACS asks you to.
 
